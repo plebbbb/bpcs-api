@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const PORT =  "8080";
 const BPCS = require('./CPP/build/Release/main');
 const multer = require('multer')
 const upload = multer({
@@ -68,7 +67,9 @@ app.post('/decode',upload.any(), (req, res) => {
 
 
 
+const port = process.env.PORT || 8080;
+
 app.listen(
-    PORT,
-    () => console.log(`listening on ${PORT}`)
+    port,
+    () => console.log(`listening on ${port}`)
 );
