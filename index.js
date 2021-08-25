@@ -58,7 +58,7 @@ app.post('/decode',upload.any(), (req, res) => {
             'filename' : "output.bin"
         })
     
-        res.status(200).end(bmp_buffer);
+        res.status(200).end(data_output);
     }
     else {
         res.status(400).send({});
