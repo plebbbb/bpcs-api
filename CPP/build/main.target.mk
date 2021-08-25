@@ -9,6 +9,7 @@ DEFS_Debug := \
 	'-DV8_DEPRECATION_WARNINGS=1' \
 	'-DV8_DEPRECATION_WARNINGS' \
 	'-DV8_IMMINENT_DEPRECATION_WARNINGS' \
+	'-D_GLIBCXX_USE_CXX11_ABI=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-D__STDC_FORMAT_MACROS' \
@@ -42,16 +43,16 @@ CFLAGS_C_Debug :=
 CFLAGS_CC_Debug := \
 	-fno-rtti \
 	-fno-exceptions \
-	-std=gnu++1y
+	-std=gnu++14
 
 INCS_Debug := \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/include/node \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/src \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/deps/openssl/config \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/deps/openssl/openssl/include \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/deps/uv/include \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/deps/zlib \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/deps/v8/include \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/include/node \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/src \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/deps/openssl/config \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/deps/openssl/openssl/include \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/deps/uv/include \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/deps/zlib \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/deps/v8/include \
 	-I$(srcdir)/../node_modules/nan
 
 DEFS_Release := \
@@ -61,6 +62,7 @@ DEFS_Release := \
 	'-DV8_DEPRECATION_WARNINGS=1' \
 	'-DV8_DEPRECATION_WARNINGS' \
 	'-DV8_IMMINENT_DEPRECATION_WARNINGS' \
+	'-D_GLIBCXX_USE_CXX11_ABI=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-D__STDC_FORMAT_MACROS' \
@@ -91,16 +93,16 @@ CFLAGS_C_Release :=
 CFLAGS_CC_Release := \
 	-fno-rtti \
 	-fno-exceptions \
-	-std=gnu++1y
+	-std=gnu++14
 
 INCS_Release := \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/include/node \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/src \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/deps/openssl/config \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/deps/openssl/openssl/include \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/deps/uv/include \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/deps/zlib \
-	-I/home/plebbb/.cache/node-gyp/14.17.5/deps/v8/include \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/include/node \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/src \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/deps/openssl/config \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/deps/openssl/openssl/include \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/deps/uv/include \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/deps/zlib \
+	-I/home/plebbb/.cache/node-gyp/16.7.0/deps/v8/include \
 	-I$(srcdir)/../node_modules/nan
 
 OBJS := \
