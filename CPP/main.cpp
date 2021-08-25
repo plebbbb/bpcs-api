@@ -516,7 +516,7 @@ using v8::Value;
                 output = place_bit(output, (i * 8) + j, get_bit(arr[i], j));
             }
         }
-        //  cout << "\n" << bitset<32>(output);
+       //   cout << "\n" << bitset<32>(output);
         return output;
     }
 
@@ -712,7 +712,7 @@ bool WRITE(char* data, char* content, int content_size, int block_height, float 
     BIT_PER_PIXEL = char_arr_to_int(&data[28], 2);
     BYTE_PER_ROW = ceil(((double)WIDTH * ((double)BIT_PER_PIXEL / 8.00))/4.00) * 4;
     BYTE_PER_PIXEL = ((double)BIT_PER_PIXEL/8.0);//
-    //cout<< PIXEL_ARR_POINTER;
+  //  cout<< "\n" << PIXEL_ARR_POINTER;
     //BPR = BYTE_PER_ROW;
     int block_height_amount = (int) floor(((double) HEIGHT) / ((double) block_height));
     int block_width_amount = (int) floor(
@@ -737,19 +737,19 @@ bool WRITE(char* data, char* content, int content_size, int block_height, float 
 
     for (int L = 0; L < 8; L++) { //bit significance iteration, up to a significance limit
           //  L = 7;
-        // cout<< "T";
+     //    cout<< "T";
         for (int k = 0; k < BIT_PER_PIXEL / 8; k++) { //iteration of selected color spectrum
-          //  cout<< "e";
+       //     cout<< "e";
 
             for (int i = 0; i < block_height_amount; i++) {
-                // cout<< "Tf";
+           //      cout<< "Tf";
 
                 for (int j = 0; j < block_width_amount; j++) {
                     //uint8_t *tmpdel = evaluator;
                     uint8_t * evaluator = get_pixel8_block_ARR(block_height, j * 8, i * block_height, k, L, data);
                     //delete[] tmpdel;
                     float v = get_a_factor(evaluator, block_height);
-                    //cout << "\nWBPCS: " << v;
+              //      cout << "\nWBPCS: " << v;
                     if (HB_BLOCK_ENB && (HBcheck > 0)) {
                         int addr = HeadBlockerSize - HBcheck;
                         Header_PTR_ARR[addr] = new unsigned int[4];
@@ -922,6 +922,7 @@ bool READ(char* data, float a_threshold_header_i, float a_threshold_header_f, fl
                         //  cout << (read_headerbytes == false ? a_threshold_header : a_threshold_block) << " ";
                         //  uint8_t * tmpdel = container;
                         //  int eeee = 0;
+                     //   cout << L << " " << k << " " << i << " " << j;
                         uint8_t *container = get_pixel8_block_ARR(block_height, j * 8, i * block_height, k, L, data);
                         // delete[] tmpdel;
                      //   cout << "HI";
@@ -1021,13 +1022,19 @@ NAN_METHOD(WriteBMP) {
     v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
     auto buffer = info[0]->ToObject(context).ToLocalChecked();
     size_t size = node::Buffer::Length(buffer);
+   //cout << size;
     char* output = new char[size];
     memcpy(output, node::Buffer::Data(buffer), size); //I shouldnt need to copy but cant get it working directly off of buffer
    // std::vector<char> insert(node::Buffer::Data(insertdata),node::Buffer::Length(insertdata) + node::Buffer::Data(insertdata));
 
+    cout << std::bitset<8>(output[0]);
+
+   // cout << "HERe1";
     auto insertdata = info[1]->ToObject(context).ToLocalChecked();
     size_t idsize = node::Buffer::Length(insertdata);
     std::string::size_type sz;
+   // cout << node::Buffer::Data(insertdata);
+    //cout << "HERe2";
 
     int BlockHeight = (info[2]->Uint32Value(context).ToChecked());
     v8::Isolate* isolate = info.GetIsolate(); //there has to be a better way of doing this
@@ -1043,14 +1050,16 @@ NAN_METHOD(WriteBMP) {
     std::string cppStr3(*str3);
     float WR_AF = stof(cppStr3);
 
+   // cout << BlockHeight << " " << Bl_AF_I << " "<< Bl_AF_F << " "<< WR_AF;
+
     if (WRITE(output, node::Buffer::Data(insertdata), idsize, BlockHeight, Bl_AF_I, Bl_AF_F,WR_AF)) {
       //  cout << "\n" << BPR << "\n";
 
   //  uint8_t * arr = get_pixel8_block_ARR(8, 8, 0, 0, 0, output, 54, 3, BPR);
 
    // for(int i = 0; i < 8; i++){
-  //      cout<<bitset<8>(arr[i]) << "\n";
-   // }
+   //     cout<<bitset<8>(arr[i]) << "\n";
+ //   }
 
     //if (do_convert(output.data(), insert.data(), insert.size(), (int)overwrite_initfac[0], overwrite_initfac[1], overwrite_initfac[2], overwrite_initfac[3])) {
         info.GetReturnValue().Set(
