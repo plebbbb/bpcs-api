@@ -42,8 +42,8 @@ app.post('/encode',upload.any(), (req, res) => {
     }
 });
 
-app.post('/decode',upload.any(), (req, res) => {
-    const basefile = req.files[0].buffer;
+app.post('/decode',upload.single('base_file'), (req, res) => {
+    const basefile = req.file.buffer;
    // const basefile = Buffer.from(base_file, "base64");
     const {block_height} = req.body;
     const {init_block_factor} = req.body;
