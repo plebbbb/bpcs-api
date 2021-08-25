@@ -53,7 +53,7 @@ app.post('/decode',upload.any(), (req, res) => {
 
     var data_output = BPCS.DECODE(basefile, block_height, init_block_factor, final_block_factor, write_block_factor);
 
-    if(typeof bmp_buffer != 'undefined'){
+    if(typeof data_output != 'undefined'){
         res.writeHead(200, {
             'filename' : "output.bin"
         })
